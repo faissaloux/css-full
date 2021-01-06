@@ -1,3 +1,3 @@
 [submodule "theme"]
-	path = css
+	path = wp-content/themes/css
 	url = https://github.com/faissaloux/css.git
