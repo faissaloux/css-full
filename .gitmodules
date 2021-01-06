@@ -1,0 +1,3 @@
+[submodule "caestus-wp"]
+	path = wp-content/themes/caestus-wp
+	url = https://github.com/faissaloux/css.git
