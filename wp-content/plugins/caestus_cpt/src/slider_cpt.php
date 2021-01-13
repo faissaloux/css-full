@@ -32,7 +32,8 @@ function pack_post_type() {
         'hierarchical' => false,
         'menu_position' => 21,
         'menu_icon' => 'dashicons-images-alt',
-        'supports' => array('title', 'thumbnail', 'editor')
+        'supports' => array('title', 'thumbnail', 'editor'),
+        'taxonomies' => array( 'category' ),
     );
     register_post_type('pack_cpt', $args);
 }
