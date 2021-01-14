@@ -63,8 +63,10 @@ class cart {
 
 	public function count(){
 		$count = 0;
-		foreach ($_SESSION['cart_caestus'] as $key => $value) {
-			$count += count($value);
+		foreach ($_SESSION['cart_caestus'] as $category) {
+			foreach($category as $item){
+				$count += $item['quantity'];
+			}
 		}
 		return $count;
 	}
