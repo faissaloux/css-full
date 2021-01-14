@@ -46,6 +46,9 @@ class cart {
 	public function remove_item($id,$category){
 		if(isset($_SESSION['cart_caestus'][$category][$id])){
 			unset($_SESSION['cart_caestus'][$category][$id]);
+			if(empty($_SESSION['cart_caestus'][$category])){
+				unset($_SESSION['cart_caestus'][$category]);
+			}
 			return true;
 		}
 		return false;
