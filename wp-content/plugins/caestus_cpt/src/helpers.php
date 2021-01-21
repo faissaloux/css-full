@@ -39,7 +39,7 @@ function top_header_menu_bootstrap4(){
 	     'container_id'    => 'bs4navbar',
 		 'container_class' => 'collapse navbar-collapse justify-content-center',
 	     'menu_id'         => false,
-	     'menu_class'      => 'navbar-nav w-60 d-flex justify-content-between',
+	     'menu_class'      => 'navbar-nav col-sm-12 col-md-8 d-flex justify-content-between',
 	     'depth'           => 3,
 	     'fallback_cb'     => 'bs4navwalker::fallback',
 	     'walker'          => new bs4navwalker()
