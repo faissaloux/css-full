@@ -37,14 +37,23 @@ function top_header_menu_bootstrap4(){
 	     'theme_location'  => 'top',
 	     'container'       => 'div',
 	     'container_id'    => 'bs4navbar',
-	     'container_class' => 'collapse navbar-collapse',
+		 'container_class' => 'collapse navbar-collapse justify-content-center',
 	     'menu_id'         => false,
-	     'menu_class'      => 'navbar-nav mr-auto',
+	     'menu_class'      => 'navbar-nav w-60 d-flex justify-content-between',
 	     'depth'           => 3,
 	     'fallback_cb'     => 'bs4navwalker::fallback',
 	     'walker'          => new bs4navwalker()
 	   ]);
 }
+
+function register_my_menus() {
+    register_nav_menus(
+      array(
+        'top' => __( 'Top Menu' )
+       )
+    );
+}
+add_action( 'init', 'register_my_menus' );
 
 
 /************************************************************/
