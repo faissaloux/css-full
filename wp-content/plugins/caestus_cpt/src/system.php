@@ -1,10 +1,25 @@
 <?php 
 
-/**
- * 
+/** 
+ * system::product_gallery()
  */
 class System
 {
+
+
+    public static function product_gallery($id){
+        $gallery = get_post_meta($id,'product_settings')[0]['gallery_product'];
+        $gallery = explode(',', $gallery);
+        $images = [];
+        if(count($gallery) > 0 ){
+            foreach ($gallery as $image) {
+                if($image != '' or !empty($image)){
+                 $images[] = wp_get_attachment_image_url($image,'full');
+                }
+            }
+        }
+        return $images;
+    }
     
     public static function brands(){
         $args = array(

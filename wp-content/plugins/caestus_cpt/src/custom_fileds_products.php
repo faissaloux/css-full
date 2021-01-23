@@ -3,7 +3,7 @@
 
 
 
-add_action( 'cmb2_admin_init', 'cmb2_sample_metaboxes' );
+// add_action( 'cmb2_admin_init', 'cmb2_sample_metaboxes' );
 
 
 
