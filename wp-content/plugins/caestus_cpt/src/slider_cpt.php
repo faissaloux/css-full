@@ -68,7 +68,25 @@ function register_pack() {
         'supports' => ['title',
         'editor',
         'thumbnail'] ,
-    'taxonomies'          => array( 'category' ),
+    'taxonomies'          => array( 'pack_category' ),
     );
     register_post_type( 'pack_cpt', $args );
     } add_action( 'init', 'register_pack', 0 );
+
+
+    function pack_taxonomy() {
+        register_taxonomy(
+            'pack_categories',  // The name of the taxonomy. Name should be in slug form (must not contain capital letters or spaces).
+            'pack_cpt',             // post type name
+            array(
+                'hierarchical' => true,
+                'label' => 'pack categories', // display name
+                'query_var' => true,
+                'rewrite' => array(
+                    'slug' => 'pack_categories',    // This controls the base slug that will display before each term
+                    'with_front' => false  // Don't display the category base before
+                )
+            )
+        );
+    }
+    add_action( 'init', 'pack_taxonomy');
