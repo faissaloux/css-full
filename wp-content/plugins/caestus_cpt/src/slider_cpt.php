@@ -2,7 +2,6 @@
 
 
 
-
 function register_pack() {
 
     $labels = array(
@@ -65,28 +64,29 @@ function register_pack() {
         'exclude_from_search'   => false,
         'publicly_queryable'    => true,
         'capability_type'       => 'post',
-        'supports' => ['title',
-        'editor',
-        'thumbnail'] ,
-    'taxonomies'          => array( 'pack_category' ),
+        'supports'              => ['title',
+                                    'editor',
+                                    'thumbnail'] ,
+        'taxonomies'            => array( 'category' ),
     );
     register_post_type( 'pack_cpt', $args );
-    } add_action( 'init', 'register_pack', 0 );
+} add_action( 'init', 'register_pack');
 
 
-    function pack_taxonomy() {
-        register_taxonomy(
-            'pack_categories',  // The name of the taxonomy. Name should be in slug form (must not contain capital letters or spaces).
-            'pack_cpt',             // post type name
-            array(
-                'hierarchical' => true,
-                'label' => 'pack categories', // display name
-                'query_var' => true,
-                'rewrite' => array(
-                    'slug' => 'pack_categories',    // This controls the base slug that will display before each term
-                    'with_front' => false  // Don't display the category base before
-                )
+function pack_taxonomy() {
+    register_taxonomy(
+        'pack_categories',  // The name of the taxonomy. Name should be in slug form (must not contain capital letters or spaces).
+        'pack_cpt',             // post type name
+        array(
+            'hierarchical' => true,
+            'label' => 'pack categories', // display name
+            'query_var' => true,
+            'rewrite' => array(
+                'slug' => 'pack_categories',    // This controls the base slug that will display before each term
+                'with_front' => false  // Don't display the category base before
             )
-        );
-    }
-    add_action( 'init', 'pack_taxonomy');
+        )
+    );
+    // print_r(get_object_taxonomies( array( 'post_type' => 'pack_cpt' ) )); exit;
+}
+add_action( 'init', 'pack_taxonomy');
