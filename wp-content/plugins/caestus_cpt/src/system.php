@@ -11,9 +11,18 @@ class System
     }
     
 
-    public static function pack_header_image($id){
-        $image = get_post_meta($id,'pack_settings')[0]['header_image'];
-        return wp_get_attachment_image_url($image,'full');
+    public static function pack_gallery($id){
+        $gallery = get_post_meta($id,'pack_settings')[0]['gallery_pack'];
+        $gallery = explode(',', $gallery);
+        $images = [];
+        if(count($gallery) > 0 ){
+            foreach ($gallery as $image) {
+                if($image != '' or !empty($image)){
+                 $images[] = wp_get_attachment_image_url($image,'full');
+                }
+            }
+        }
+        return $images;
     }
 
 

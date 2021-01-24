@@ -67,7 +67,7 @@ function register_pack() {
         'supports'              => ['title',
                                     'editor',
                                     'thumbnail'] ,
-        'taxonomies'            => array( 'category' ),
+        'taxonomies'            => array( 'pack_categories' ),
     );
     register_post_type( 'pack_cpt', $args );
 } add_action( 'init', 'register_pack');
