@@ -18,6 +18,24 @@ function brands(){
 	return $result;
 }
 
+function accessories(){
+	$result = [];
+	$accessories = System::accessories();
+	foreach ($accessories as $accessory) : 
+		$options = System::accessory_options($accessory->ID);
+		$image   = System::get_accessory_image($options['accessory']);
+		$link    = $options['accessory_link'];
+		
+		$item = [
+			'title' => $accessory->post_title,
+			'image' => $image,
+			'url'	=> $link,
+		];
+		$result[] = $item;
+	endforeach;
+	return $result;
+}
+
 
 function caestus_products($cat_id = false ) {
 	return System::products($cat_id);

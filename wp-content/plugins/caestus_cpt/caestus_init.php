@@ -17,6 +17,7 @@ require_once('cmb2/init.php');
 require_once('src/custom_fileds_products.php');
 require_once('src/brands_cpt.php');
 require_once('src/slider_cpt.php');
+require_once('src/accessories_cpt.php');
 require_once('src/product_cpt.php');
 require_once('src/widgets_logic.php');
 require_once('src/cart.php');

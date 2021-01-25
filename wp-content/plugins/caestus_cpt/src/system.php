@@ -50,6 +50,24 @@ class System
         return get_posts( $args ); 
     }
 
+    public static function accessories(){
+        $args = array(
+            'numberposts'       => -1,
+            'post_type'         => 'accessories_cpt',
+            'post_status'       => 'publish',
+            'suppress_filters'  => true 
+        );
+        return get_posts( $args ); 
+    }
+
+    public static function accessory_options($id){
+        return get_post_meta ($id, 'accessory_settings' )[0]; 
+    }
+
+    public static function get_accessory_image($id){
+        return wp_get_attachment_image_src ($id ,'full')[0]; 
+    }
+
     public static function products($cat_id = false){
         $query_args = array(  'posts_per_page' => '-1', 'post_type' => 'products_cpt' );
 
@@ -134,10 +152,10 @@ class System
         return get_post_meta ($id, 'brand_settings' )[0]; 
     }
 
-
     public static function get_brand_image($id){
         return wp_get_attachment_image_src ($id ,'full')[0]; 
     }
+
 
     public static function sliders(){
         $args = array(
