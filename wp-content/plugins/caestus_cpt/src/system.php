@@ -60,6 +60,15 @@ class System
         return get_posts( $args ); 
     }
 
+    public static function packs($id){
+        $pack = get_post_meta($id,'product_settings')[0]['pack_products'];
+        return $pack;
+    }
+
+    public static function packs_options(){
+        return get_post_meta ('product_settings' )[0]; 
+    }
+
     public static function accessory_options($id){
         return get_post_meta ($id, 'accessory_settings' )[0]; 
     }
