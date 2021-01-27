@@ -36,6 +36,25 @@ function accessories(){
 	return $result;
 }
 
+function prestations(){
+	$result = [];
+	$prestations = System::prestations();
+	foreach ($prestations as $prestation) :
+		$thumbnail	= get_the_post_thumbnail_url($prestation->ID);
+		$gallery   	= System::get_prestations_image($prestation->ID);
+		$link    	= get_permalink($prestation->ID);
+		
+		$item = [
+			'title' 	=> $prestation->post_title,
+			'thumbnail'	=> $thumbnail,
+			'gallery' 	=> $gallery,
+			'url'		=> $link,
+		];
+		
+		$result[] = $item;
+	endforeach;
+	return $result;
+}
 
 
 function caestus_products($cat_id = false ) {

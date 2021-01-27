@@ -60,6 +60,30 @@ class System
         return get_posts( $args ); 
     }
 
+    public static function prestations(){
+        $args = array(
+            'numberposts'       => -1,
+            'post_type'         => 'prestation_cpt',
+            'post_status'       => 'publish',
+            'suppress_filters'  => true 
+        );
+        return get_posts( $args ); 
+    }
+
+    public static function get_prestations_image($id){
+        $gallery = get_post_meta($id,'prestation_settings')[0]['gallery_prestation'];
+        $gallery = explode(',', $gallery);
+        $images = [];
+        if(count($gallery) > 0 ){
+            foreach ($gallery as $image) {
+                if($image != '' or !empty($image)){
+                 $images[] = wp_get_attachment_image_url($image,'full');
+                }
+            }
+        }
+        return $images;
+    }
+
     public static function packs($id){
         $pack = get_post_meta($id,'product_settings')[0]['pack_products'];
         return $pack;
@@ -67,6 +91,10 @@ class System
 
     public static function packs_options(){
         return get_post_meta ('product_settings' )[0]; 
+    }
+
+    public static function prestations_options($id){
+        return get_post_meta ($id, 'prestation_settings' )[0];
     }
 
     public static function accessory_options($id){
