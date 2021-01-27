@@ -37,6 +37,7 @@ function accessories(){
 }
 
 
+
 function caestus_products($cat_id = false ) {
 	return System::products($cat_id);
 }
@@ -67,7 +68,8 @@ function top_header_menu_bootstrap4(){
 function register_my_menus() {
     register_nav_menus(
       array(
-        'top' => __( 'Top Menu' )
+		'top' 	=> __( 'Top Menu' ),
+		'phone' => __( 'Phone Menu' )
        )
     );
 }
