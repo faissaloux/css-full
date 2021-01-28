@@ -39,6 +39,11 @@ class System
         }
         return $images;
     }
+
+    public static function product_tech($id){
+        $tech = get_post_meta($id,'product_tech')[0]['tech_product'];
+        return $tech;
+    }
     
     public static function brands(){
         $args = array(
