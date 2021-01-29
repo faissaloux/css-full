@@ -23,8 +23,18 @@ class caestus_search {
 	}
 
 	public function search(){
-		$query_args = array(  'posts_per_page' => '-1',  's' => $this->query , 'post_type' => 'products_cpt' );
-		$result = new WP_Query( $query_args );
+		global $wpdb;
+
+		$postids = $wpdb->get_col("select ID from $wpdb->posts where post_title LIKE '".$this->query."%' ");
+	
+		$args = array(
+			'post__in'	=> $postids,
+			'post_type'	=>'products_cpt',
+			'orderby'	=>'title',
+			'order'		=>'asc'
+		);
+	
+		$result = new WP_Query($args);
 		$this->result = $result->posts;
 		unset($query_args);
 		return $this;
@@ -32,18 +42,19 @@ class caestus_search {
 
 	public function clean(){
 		$result = [];
+		$data = [];
 		if(!empty($this->result)){
 			foreach ($this->result as $item) {
 
 				$image = get_the_post_thumbnail_url($item->ID);
 				$link = get_permalink($item->ID);
 
-				$data = [
+				array_push($data, [
 					'id' => $item->ID,
 					'image' => $image,
 					'title' => $item->post_title,
 					'link'	=> $link,
-				];
+				]);
 			}
 		}else{
 			$data = [
