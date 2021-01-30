@@ -142,3 +142,7 @@ function send_order($params){
 function products_categories(){
 	return System::product_categories();
 }
+
+function packs_production_categories(){
+	return System::packs_production_categories();
+}

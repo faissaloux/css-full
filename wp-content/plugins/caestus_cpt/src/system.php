@@ -189,6 +189,30 @@ class System
          return $return;
     }
 
+    public static function packs_production_categories(){
+        $args = array(
+              'taxonomy' => 'pack_categories',
+               'hide_empty'               => 0,
+               'hierarchical'             => 1,
+              'post_type' => 'pack_cpt',
+          );
+
+        $cats = get_categories($args);
+
+        $return = [];
+
+        foreach ($cats as $cat) {
+           $item = [
+               'term_id' => $cat->term_id,
+               'name' => $cat->name,
+               'slug' => $cat->slug,
+               'cat_ID' => $cat->cat_ID,
+           ];
+           $return[] = $item;
+        }
+        return $return;
+   }
+
 
     public static function brand_options($id){
         return get_post_meta ($id, 'brand_settings' )[0]; 
