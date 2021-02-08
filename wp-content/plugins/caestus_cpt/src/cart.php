@@ -19,7 +19,9 @@ class cart {
 	}
 
 	public function get_items(){
-		return $_SESSION['cart_caestus'];
+		if(isset($_SESSION['cart_caestus'])){
+			return $_SESSION['cart_caestus'];
+		}
 	}
 
 	public function add_item($id,$image,$title,$quantity,$category){
