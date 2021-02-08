@@ -47,14 +47,16 @@ class caestus_search {
 		if(!empty($this->result)){
 			foreach ($this->result as $item) {
 
-				$image = get_the_post_thumbnail_url($item->ID);
-				$link = get_permalink($item->ID);
+				$image 		= get_the_post_thumbnail_url($item->ID);
+				$link 		= get_permalink($item->ID);
+				$firstCat	= get_the_category($item->ID)[0]->name;
 
 				array_push($data, [
-					'id' => $item->ID,
-					'image' => $image,
-					'title' => $item->post_title,
-					'link'	=> $link,
+					'id'		=> $item->ID,
+					'image' 	=> $image,
+					'title' 	=> $item->post_title,
+					'link'		=> $link,
+					'category'	=> $firstCat
 				]);
 			}
 		}else{
