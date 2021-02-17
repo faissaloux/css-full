@@ -21,6 +21,7 @@
             <?php foreach ($category as $cat):?>
                 <?php
                     $args = array(
+                        'numberposts'      => -1,
                         'post_type'        => 'products_cpt',
                         'category'         => $cat->term_id,
                         'post_status'      => 'publish',
